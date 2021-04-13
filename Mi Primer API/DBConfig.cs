@@ -8,7 +8,8 @@ namespace Mi_Primer_API
     {
         public DbSet<Tienda> Tiendas { get; set; } 
         public DbSet<Factura> Facturas { get; set; } 
-        public DbSet<Producto> Productos { get; set; }  
+        public DbSet<Producto> Productos { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }  
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)

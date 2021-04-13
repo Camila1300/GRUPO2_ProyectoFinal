@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 namespace Mi_Primer_API.Controllers
 {
     [ApiController]
@@ -8,7 +9,7 @@ namespace Mi_Primer_API.Controllers
     public class ProductoController: ControllerBase
     {
         
-           private ProductoRepository productoRepository;
+        private ProductoRepository productoRepository;
 
         public ProductoController(){
            productoRepository=new ProductoRepository();
@@ -42,4 +43,3 @@ namespace Mi_Primer_API.Controllers
         }
     }
 }
-
