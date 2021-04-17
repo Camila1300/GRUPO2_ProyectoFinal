@@ -54,10 +54,14 @@
 /*========== NAV ==========*/
 .nav{
   max-width: 1024px;
+  margin: 10px;
   height: var(--header-height);
   display: flex;
   justify-content: space-between;
-  align-items: center;
+
+}
+ul{
+  list-style-type: none;
 }
 
 @media screen and (max-width: 768px){
