@@ -343,8 +343,14 @@ img{
   padding: .75rem;
 }
 
+.menu_servicios{
+  width:210px;
+  height: 150px;
+}
+
 .menu__img{
-  width: 100px;
+  width: 120px;
+  height: 200px;
   align-self: center;
   margin-bottom: var(--mb-2);
 }
