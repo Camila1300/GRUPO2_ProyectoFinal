@@ -18,7 +18,7 @@ namespace Mi_Primer_API.Controllers
             PrecioProducto = NuevoPrecioProducto;
             Cantidad = NuevaCantidad;
             Descripcion = NuevaDescripcion;
-            Usuario = NuevoUsuarioCompra;
+            UsuarioCompra = NuevoUsuarioCompra;
         }
         public Carrito()
         {
