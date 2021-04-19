@@ -1,6 +1,11 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
+
 namespace Mi_Primer_API.Controllers
 {
     [ApiController]
@@ -28,15 +33,31 @@ namespace Mi_Primer_API.Controllers
         }
 
         [HttpPost("login")]
-        public Usuario LoginUsuario (string correo, string contraseña)
+        public async Task<ActionResult<Usuario>> LoginUsuario ([FromBody]Usuario nUsuario)
         {
-            return _UsuarioRepository.Login(correo, contraseña);
+            var usuario = await _UsuarioRepository.Login(nUsuario);
+            if (usuario == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                return Ok();
+            }
         }
 
         [HttpPost("register")]
-        public Usuario RegisterUsuario([FromBody]Usuario nUsuario)
+        public async Task<ActionResult<Usuario>> RegisterUsuario([FromBody]Usuario nUsuario)
         {
-            return _UsuarioRepository.Register(nUsuario);
+            var user = await _UsuarioRepository.Register(nUsuario);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                return Ok();
+            }
         }
 
         [HttpPut("{correo}")]
@@ -46,9 +67,17 @@ namespace Mi_Primer_API.Controllers
         }
 
         [HttpDelete("{correo}")]
-        public string DeleteUsuario(string correo)
+        public async Task<ActionResult<Usuario>> DeleteUsuario(string correo)
         {
-            return _UsuarioRepository.Delete(correo);
+            var usuario = await _UsuarioRepository.Delete(correo);
+            if(usuario == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok();
+            }
         }
     }
 }

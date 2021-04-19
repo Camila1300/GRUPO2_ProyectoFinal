@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Mi_Primer_API;
 using Mi_Primer_API.Controllers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Mi_Primer_API
 {
@@ -26,38 +28,16 @@ namespace Mi_Primer_API
             return _context.Usuarios.Where(x => x.Correo == email).FirstOrDefault();
         }
 
-        public Usuario Login (string correo, string contraseña)
+        public async Task<Usuario> Login (Usuario nUsuario)
         {
-            var usuario = _context.Usuarios.Where(x => x.Correo == correo).FirstOrDefault();
-            if (usuario == null)
-            {
-                return null;
-            }
-            else
-            {
-                if (correo == usuario.Correo && contraseña == usuario.Contraseña)
-                {
-                    return usuario;
-                }
-                else
-                {
-                    return null;
-                }
-            }
+            var usuario = await _context.Usuarios.SingleOrDefaultAsync(x => x.Correo == nUsuario.Correo && x.Contraseña == nUsuario.Contraseña);
+            return usuario;
         }
-        public Usuario Register(Usuario nUsuario)
-        {
-            var usuario = _context.Usuarios.Where(x => x.Correo == nUsuario.Correo).FirstOrDefault();
-            if(usuario != null)
-            {
-                return null;
-            }
-            else
-            {
-                _context.Usuarios.Add(nUsuario);
-                _context.SaveChanges();
-                return nUsuario;
-            }
+        public async Task<Usuario> Register(Usuario nUsuario)
+        {            
+            _context.Usuarios.Add(nUsuario);
+            await _context.SaveChangesAsync();
+            return nUsuario;
         }
         public Usuario Edit(string correo, Usuario nUsuario)
         {
@@ -75,19 +55,12 @@ namespace Mi_Primer_API
                 return nUsuario;
             }
         }
-        public string Delete(string correo)
+        public async Task<Usuario> Delete(string correo)
         {
             var usuario = _context.Usuarios.Where(x => x.Correo == correo).FirstOrDefault();
-            if(usuario == null)
-            {
-                return "El correo no existe";
-            }
-            else
-            {
-                _context.Usuarios.Remove(_context.Usuarios.Find(correo));
-                _context.SaveChanges();
-                return "Usuario borrado, Correo: " + correo;
-            }
+            _context.Usuarios.Remove(usuario);
+            _context.SaveChanges();
+            return usuario;
         }
     }
 }
