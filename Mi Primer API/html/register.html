@@ -19,8 +19,9 @@
 
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
-                        <li class=""><a href="index.html" class="nav__link active-link">Inicio</a></li>
-                        <li class=""><a href="registroindex.html" class="nav__link">Registro</a></li>
+                        <li class=""><a href="index.html" class="nav__link">Inicio</a></li>
+                        <li class="nav__item"><a href="login.html" class="nav__link">Inicio de Sesión</a></li>
+                        <li class=""><a href="register.html" class="nav__link active-link">Registro</a></li>
                         <li class=""><a href="#Catalogo" class="nav__link">Catalogo</a></li>
                         <li class=""><a href="carrito (1).html" class="nav__link">Carrito</a></li>
 
@@ -38,61 +39,31 @@
                     <img src="assets/img/undraw_two_factor_authentication_namy.svg" alt="">
                 </div>
 
-                <div class="login__forms">
+                <div class="login__forms register-user">
                     <form action="" class="login__registre" id="login-in">
                         <h1 class="login__title">Registrarse</h1>
     
                         <div class="login__box">
                             <i class='bx bx-user login__icon'></i>
-                            <input type="text" placeholder="Usuario" class="login__input">
-                        </div>
-    
-                        <div class="login__box">
-                            <i class='bx bx-lock-alt login__icon'></i>
-                            <input type="password" placeholder="Contraseña" class="login__input">
+                            <input type="text" placeholder="Usuario" class="login__input" id="username-value">
                         </div>
 
-                        <a href="#" class="login__forgot">¿Olvido su contraseña?</a>
-
-                        <a href="#" class="login__button">Ingresar</a>
-
-                        <div>
-                            <span class="login__account">¿No tienes una cuenta?</span>
-                            <span class="login__signin" id="sign-up">Registrarse</span>
-                        </div>
-                    </form>
-
-                    <form action="" class="login__create none" id="login-up">
-                        <h1 class="login__title">Crear Cuenta</h1>
-    
-                        <div class="login__box">
-                            <i class='bx bx-user login__icon'></i>
-                            <input type="text" placeholder="Usuario" class="login__input">
-                        </div>
-    
                         <div class="login__box">
                             <i class='bx bx-at login__icon'></i>
-                            <input type="text" placeholder="Correo Electronico" class="login__input">
+                            <input type="text" placeholder="Correo Electronico" class="login__input" id="emailid-value">
                         </div>
-
+    
                         <div class="login__box">
                             <i class='bx bx-lock-alt login__icon'></i>
-                            <input type="password" placeholder="Contraseña" class="login__input">
+                            <input type="password" placeholder="Contraseña" class="login__input" id="password-value">
                         </div>
 
-                        <a href="#" class="login__button">Registarse</a>
+                        <button href="#" class="login__button">Ingresar</a>
 
                         <div>
                             <span class="login__account">¿Ya tienes una cuenta?</span>
-                            <span class="login__signup" id="sign-in">Ingresar</span>
+                            <span href="login.html" class="login__signin" id="sign-up">Iniciar Sesion</span>
                         </div>
-
-                        <div class="login__social">
-                            <a href="#" class="login__social-icon"><i class='bx bxl-facebook' ></i></a>
-                            <a href="#" class="login__social-icon"><i class='bx bxl-twitter' ></i></a>
-                            <a href="#" class="login__social-icon"><i class='bx bxl-google' ></i></a>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -104,5 +75,7 @@
 
         <!--===== MAIN JS =====-->
         <script src="assets/js/registromain.js"></script>
+        <script src="assets/js/register.js"></script>
+
     </body>
 </html>
