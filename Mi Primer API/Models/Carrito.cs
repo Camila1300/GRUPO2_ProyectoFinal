@@ -9,16 +9,16 @@ namespace Mi_Primer_API.Controllers
         public int PrecioProducto {get; set; }
         public int Cantidad {get; set; }
         public string Descripcion {get; set; }
-        public string OrdenUsuario {get; set; }
+        public string UsuarioCompra {get; set; }
 
-        public Carrito(int NuevoIdProducto, string NuevoNameProducto, int NuevoPrecioProducto, int NuevaCantidad, string NuevaDescripcion, string NuevaOrdenUsuario)
+        public Carrito(int NuevoIdProducto, string NuevoNameProducto, int NuevoPrecioProducto, int NuevaCantidad, string NuevaDescripcion, string NuevoUsuarioCompra)
         {
             IdProducto = NuevoIdProducto;
             NameProducto = NuevoNameProducto;
             PrecioProducto = NuevoPrecioProducto;
             Cantidad = NuevaCantidad;
             Descripcion = NuevaDescripcion;
-            OrdenUsuario = NuevaOrdenUsuario;
+            UsuarioCompra = NuevoUsuarioCompra;
         }
         public Carrito()
         {
