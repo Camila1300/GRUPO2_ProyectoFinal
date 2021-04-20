@@ -10,6 +10,7 @@ namespace Mi_Primer_API
         public DbSet<Factura> Facturas { get; set; } 
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }  
+        public DbSet<Carrito> Carrito { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
