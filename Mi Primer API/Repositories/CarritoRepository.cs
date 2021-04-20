@@ -41,5 +41,11 @@ namespace Mi_Primer_API
                return nCantidad;
            }
        }
+       public string EliminarDeCarrito(int IdCompra)
+       {
+           bd.Carrito.Remove(bd.Carrito.Find(IdCompra));
+           bd.SaveChanges();
+           return "Producto eliminado del carrito. Id Compra: " + IdCompra;
+       }
     }
 }

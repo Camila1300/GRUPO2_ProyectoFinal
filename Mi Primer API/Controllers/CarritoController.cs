@@ -35,5 +35,12 @@ namespace Mi_Primer_API.Controllers
             var carrito = carritoRepository.ActualizarCantidad(id, nCantidad);
             return "cantidad actualizada";
         }
+
+        [HttpDelete]
+        public string EliminarCarrito([FromQuery] int IdCompra)
+        {
+            var carrito = carritoRepository.EliminarDeCarrito(IdCompra);
+            return "Producto eliminado del carrito";
+        }
     }
 }
