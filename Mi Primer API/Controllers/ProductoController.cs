@@ -20,7 +20,8 @@ namespace Mi_Primer_API.Controllers
         {
                 return productoRepository.ObtenerProductos();
         }
-        [HttpPost]
+        
+        /*[HttpPost]
         public string AgregarProducto([FromBody] Producto nuevo)
         {
             productoRepository.agregarProducto(nuevo);
@@ -40,6 +41,6 @@ namespace Mi_Primer_API.Controllers
         {
             productoRepository.BorrarProducto(id);          
             return "Producto borrado con el id "+id;
-        }
+        }*/
     }
 }

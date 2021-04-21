@@ -24,20 +24,17 @@ namespace Mi_Primer_API.Migrations
                     b.Property<int>("Cantidad")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("IdProducto")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("ImagenUrl")
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("NameProducto")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("PrecioProducto")
                         .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("UsuarioCompra")
                         .HasColumnType("TEXT");

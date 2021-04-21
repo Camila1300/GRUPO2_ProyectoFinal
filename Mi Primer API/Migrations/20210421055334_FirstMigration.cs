@@ -2,14 +2,53 @@
 
 namespace Mi_Primer_API.Migrations
 {
-    public partial class Tiendas : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "ubicacion",
-                table: "Tiendas",
-                newName: "Ubicacion");
+            migrationBuilder.CreateTable(
+                name: "Carrito",
+                columns: table => new
+                {
+                    IdCompra = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    IdProducto = table.Column<int>(type: "INTEGER", nullable: false),
+                    NameProducto = table.Column<string>(type: "TEXT", nullable: true),
+                    PrecioProducto = table.Column<int>(type: "INTEGER", nullable: false),
+                    Cantidad = table.Column<int>(type: "INTEGER", nullable: false),
+                    UsuarioCompra = table.Column<string>(type: "TEXT", nullable: true),
+                    Total = table.Column<decimal>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Carrito", x => x.IdCompra);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tiendas",
+                columns: table => new
+                {
+                    ID = table.Column<string>(type: "TEXT", nullable: false),
+                    Nombre = table.Column<string>(type: "TEXT", nullable: true),
+                    Ubicacion = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tiendas", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    Correo = table.Column<string>(type: "TEXT", nullable: false),
+                    Contraseña = table.Column<string>(type: "TEXT", nullable: true),
+                    NombreUsuario = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.Correo);
+                });
 
             migrationBuilder.CreateTable(
                 name: "ControlInventario",
@@ -37,22 +76,23 @@ namespace Mi_Primer_API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Factura",
+                name: "Facturas",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     IdFactura = table.Column<int>(type: "INTEGER", nullable: false),
                     NombreCliente = table.Column<string>(type: "TEXT", nullable: true),
+                    Productos = table.Column<string>(type: "TEXT", nullable: true),
                     TotalPagar = table.Column<int>(type: "INTEGER", nullable: false),
                     Fecha = table.Column<int>(type: "INTEGER", nullable: false),
                     TiendaID = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Factura", x => x.ID);
+                    table.PrimaryKey("PK_Facturas", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Factura_Tiendas_TiendaID",
+                        name: "FK_Facturas_Tiendas_TiendaID",
                         column: x => x.TiendaID,
                         principalTable: "Tiendas",
                         principalColumn: "ID",
@@ -60,29 +100,23 @@ namespace Mi_Primer_API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Producto",
+                name: "Productos",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    IdProducto = table.Column<int>(type: "INTEGER", nullable: false),
                     Nombre = table.Column<string>(type: "TEXT", nullable: true),
                     PrecioVenta = table.Column<int>(type: "INTEGER", nullable: false),
                     PrecioCompra = table.Column<int>(type: "INTEGER", nullable: false),
                     Descripcion = table.Column<string>(type: "TEXT", nullable: true),
-                    FacturaID = table.Column<int>(type: "INTEGER", nullable: true),
                     TiendaID = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Producto", x => x.ID);
+                    table.PrimaryKey("PK_Productos", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Producto_Factura_FacturaID",
-                        column: x => x.FacturaID,
-                        principalTable: "Factura",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Producto_Tiendas_TiendaID",
+                        name: "FK_Productos_Tiendas_TiendaID",
                         column: x => x.TiendaID,
                         principalTable: "Tiendas",
                         principalColumn: "ID",
@@ -95,36 +129,35 @@ namespace Mi_Primer_API.Migrations
                 column: "TiendaID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Factura_TiendaID",
-                table: "Factura",
+                name: "IX_Facturas_TiendaID",
+                table: "Facturas",
                 column: "TiendaID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Producto_FacturaID",
-                table: "Producto",
-                column: "FacturaID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Producto_TiendaID",
-                table: "Producto",
+                name: "IX_Productos_TiendaID",
+                table: "Productos",
                 column: "TiendaID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Carrito");
+
+            migrationBuilder.DropTable(
                 name: "ControlInventario");
 
             migrationBuilder.DropTable(
-                name: "Producto");
+                name: "Facturas");
 
             migrationBuilder.DropTable(
-                name: "Factura");
+                name: "Productos");
 
-            migrationBuilder.RenameColumn(
-                name: "Ubicacion",
-                table: "Tiendas",
-                newName: "ubicacion");
+            migrationBuilder.DropTable(
+                name: "Usuarios");
+
+            migrationBuilder.DropTable(
+                name: "Tiendas");
         }
     }
 }

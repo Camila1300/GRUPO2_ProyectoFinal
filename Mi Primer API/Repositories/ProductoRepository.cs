@@ -1,34 +1,45 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Mi_Primer_API;
 using Mi_Primer_API.Controllers;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 namespace Mi_Primer_API
 {
     public class ProductoRepository
     {
-         static List<Producto> Productos = new List<Producto>();   
+
+        private readonly Tiendas2Context _context;
+
+        public ProductoRepository()
+        {
+            _context = new Tiendas2Context();
+        }
 
          public List<Producto> ObtenerProductos()
          {
-             return Productos;
+             return _context.Productos.ToList();
          }
 
-         public void agregarProducto(Producto nuevo)
+         /*public void agregarProducto(Producto nuevo)
          {
-            Productos.Add(nuevo);
+            _context.Productos.Add(nuevo);
          }
          public void ActualizarProducto(Producto nuevo)
          {
-              Producto productoViejo= Productos.Find((t=> t.ID==nuevo.ID));
+              Producto productoViejo= _context.Productos.Find((t=> t.ID==nuevo.ID));
             
-            Productos.Remove(productoViejo);
+            _context.Productos.Remove(productoViejo);
 
-            Productos.Add(nuevo);
+            _context.Productos.Add(nuevo);
          }
         public void BorrarProducto(int id)
         {
-            Producto productoViejo= Productos.Find((t=> t.ID==id));
-            Productos.Remove(productoViejo); 
-        }
+            Producto productoViejo= _context.Productos.Find((t=> t.ID==id));
+            _context.Productos.Remove(productoViejo); 
+        }*/
 
     }
 }

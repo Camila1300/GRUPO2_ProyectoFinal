@@ -8,14 +8,43 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Mi_Primer_API.Migrations
 {
     [DbContext(typeof(Tiendas2Context))]
-    [Migration("20210324033628_AgregandoTablas")]
-    partial class AgregandoTablas
+    [Migration("20210421055334_FirstMigration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.3");
+                .HasAnnotation("ProductVersion", "5.0.4");
+
+            modelBuilder.Entity("Mi_Primer_API.Controllers.Carrito", b =>
+                {
+                    b.Property<int>("IdCompra")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("IdProducto")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("NameProducto")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("PrecioProducto")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UsuarioCompra")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("IdCompra");
+
+                    b.ToTable("Carrito");
+                });
 
             modelBuilder.Entity("Mi_Primer_API.Controllers.ControlInventario", b =>
                 {
@@ -91,6 +120,9 @@ namespace Mi_Primer_API.Migrations
                     b.Property<string>("Descripcion")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("IdProducto")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Nombre")
                         .HasColumnType("TEXT");
 
@@ -124,6 +156,22 @@ namespace Mi_Primer_API.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Tiendas");
+                });
+
+            modelBuilder.Entity("Mi_Primer_API.Controllers.Usuario", b =>
+                {
+                    b.Property<string>("Correo")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Contraseña")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NombreUsuario")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Correo");
+
+                    b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("Mi_Primer_API.Controllers.ControlInventario", b =>
