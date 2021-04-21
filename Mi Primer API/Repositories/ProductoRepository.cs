@@ -23,10 +23,12 @@ namespace Mi_Primer_API
              return _context.Productos.ToList();
          }
 
-         /*public void agregarProducto(Producto nuevo)
+         public void agregarProducto(Producto nuevo)
          {
             _context.Productos.Add(nuevo);
          }
+         
+         /*
          public void ActualizarProducto(Producto nuevo)
          {
               Producto productoViejo= _context.Productos.Find((t=> t.ID==nuevo.ID));

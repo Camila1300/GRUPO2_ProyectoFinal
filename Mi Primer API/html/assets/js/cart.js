@@ -24,8 +24,6 @@ let emailContent = '';
 let passwordNameContent = '';
 let phoneNameContent = '';
 
-var menTshirtWhite = "https://cdn.shopify.com/s/files/1/0402/4117/products/WHITE_F_7cb99670-47bb-4088-8142-fe55fec2c5c9.jpg";
-
 document.getElementById("editUser").style.display = "none";
 const successMessage = document.getElementById("success-message");
 
@@ -35,25 +33,31 @@ if (typeof(Storage) !== 'undefined') {
     console.log("No es compatible");
   }
 
+
+
 //Get Productos
 const renderUsers = (products) => {
     products.forEach(product => {
         output += `
-        <div class="card mt-4 col-md-6 bg-light producto">
-        <img src="https://st2.depositphotos.com/4845131/7223/v/600/depositphotos_72231685-stock-illustration-icon-hangers.jpg" class="card-img-top" alt="...">
+        <div class="card mt-4 col-md-4 bg-light producto"">
+        <img src="https://st2.depositphotos.com/4845131/7223/v/600/depositphotos_72231685-stock-illustration-icon-hangers.jpg">
             <div class="card-body" id="idProducto" data-id=${product.idProducto}>
                 <h5 class="card-title" data-id=${product.nombre}>${product.nombre}</h5>
                 <p class="card-text precio">${product.precioCompra}</p>
-                <p class="card-text id">${product.idProducto}</p>
-                <label class="form-label">Cantidad</label>
+                <p class="card-text id d-none">${product.idProducto}</p>
+                <label class="form-label">Cantidad a Comprar</label>
                 <input class="form-control cantidadCarrito">
                 <a href="#" class="card-link" id="agregarCarrito">Añadir al Carrito</a>
             </div>
         </div>
         `;
         });
+        
+        
         usersList.innerHTML = output;
 }
+
+
 
 fetch(urlProducts)
         .then(response => response.json())

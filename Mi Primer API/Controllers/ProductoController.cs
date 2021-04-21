@@ -21,13 +21,15 @@ namespace Mi_Primer_API.Controllers
                 return productoRepository.ObtenerProductos();
         }
         
-        /*[HttpPost]
+        [HttpPost]
         public string AgregarProducto([FromBody] Producto nuevo)
         {
             productoRepository.agregarProducto(nuevo);
             
             return "Producto agregado ";
         }
+        
+        /*
         [HttpPut]
         //ID, Nombre, precio venta, precio compra, descripcion 
         public string ActualizarPrecio([FromBody] Producto nuevo)
