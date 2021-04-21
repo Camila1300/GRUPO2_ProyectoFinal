@@ -2,14 +2,16 @@
 using Mi_Primer_API;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Mi_Primer_API.Migrations
 {
     [DbContext(typeof(Tiendas2Context))]
-    partial class Tiendas2ContextModelSnapshot : ModelSnapshot
+    [Migration("20210421022128_CarritoMigration")]
+    partial class CarritoMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

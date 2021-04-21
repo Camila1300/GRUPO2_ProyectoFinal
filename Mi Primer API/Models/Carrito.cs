@@ -15,8 +15,9 @@ namespace Mi_Primer_API.Controllers
         public int Cantidad {get; set; }
         public string Descripcion {get; set; }
         public string UsuarioCompra {get; set; }
+        public string ImagenUrl {get; set;}
 
-        public Carrito(int NuevoIdProducto, string NuevoNameProducto, int NuevoPrecioProducto, int NuevaCantidad, string NuevaDescripcion, string NuevoUsuarioCompra, int NuevoIdCompra)
+        public Carrito(int NuevoIdProducto, string NuevoNameProducto, int NuevoPrecioProducto, int NuevaCantidad, string NuevaDescripcion, string NuevoUsuarioCompra, int NuevoIdCompra, string NuevaImagenUrl)
         {
             IdProducto = NuevoIdProducto;
             NameProducto = NuevoNameProducto;
@@ -25,6 +26,7 @@ namespace Mi_Primer_API.Controllers
             Descripcion = NuevaDescripcion;
             UsuarioCompra = NuevoUsuarioCompra;
             IdCompra = NuevoIdCompra;
+            ImagenUrl = NuevaImagenUrl;
         }
         public Carrito()
         {
