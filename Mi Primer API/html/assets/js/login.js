@@ -28,7 +28,7 @@ loginUser.addEventListener('submit', (e) => {
 		}
 		// Here is where you put what you want to do with the response.
         sessionStorage.userName = emailValue.value;
-        window.location.href = "http://127.0.0.1:5500/Mi%20Primer%20API/html/userSession.html?#";
+        window.location.href = "http://127.0.0.1:5500/html/userSession.html";
         alert("Te has logueado correctamente");
 	})
 	.catch(function(error) {
